@@ -49,11 +49,11 @@ public class MyRobotutor extends AppCompatActivity {
                     @Override
                     public void run() {
                         tvName.setText("正在下载数据包:" + name);
+
                         progressBar.setProgress(0);
 //                        fl_circle_progress.setVisibility(View.VISIBLE);
                     }
                 });
-
             }
 
             @Override
