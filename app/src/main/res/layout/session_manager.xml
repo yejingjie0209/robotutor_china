@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- NOTE: The id of the topmost container below must match the XML filename -->
+
+<cmu.xprize.robotutor.tutorengine.widgets.core.TScenePercentLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/session_manager"
+    android:background="#3c6b3c">
+
+    <cmu.xprize.robotutor.tutorengine.widgets.core.TLangToggle
+        android:id="@+id/SlangToggle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        app:layout_heightPercent="5%"
+        android:textOff="--> English"
+        android:textOn="--> Swahili"/>
+
+    <cmu.xprize.robotutor.tutorengine.widgets.core.TSmComponent
+        android:id="@+id/SsmComponent"
+        android:layout_below="@+id/SlangToggle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_heightPercent="83%" />
+
+    <cmu.xprize.robotutor.tutorengine.widgets.core.TSceneFrameLayout
+        android:layout_below="@+id/SsmComponent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_heightPercent="12%"
+        android:background="#3c6b3c">
+
+        <cmu.xprize.robotutor.tutorengine.widgets.core.TVersionView
+            android:id="@+id/StutorVersion"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="left|top"
+            android:textSize="20sp"
+            android:textColor="#FFF"
+            android:background="#3c6b3c"/>
+
+        <cmu.xprize.robotutor.tutorengine.widgets.core.TGuidView
+            android:id="@+id/StutorGUID"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:gravity="right|top"
+            android:layout_marginRight="20dp"
+            android:textSize="35sp"
+            android:textColor="#FFF"
+            android:background="#3c6b3c"/>
+
+    </cmu.xprize.robotutor.tutorengine.widgets.core.TSceneFrameLayout>
+
+</cmu.xprize.robotutor.tutorengine.widgets.core.TScenePercentLayout>

@@ -1,0 +1,230 @@
+{
+  "question_replacement": false,
+  "problem_type": "WORD_ENDS_WITH",
+  "dataSource": [
+    {
+      "gen_question": false,
+      "stimulus_type": "text_data",
+      "question_show": true,
+      "answer_type": "text_data",
+      "question_type": "multiple-choice",
+      "stimulus": "_ _ ko",
+      "question_say": true,
+      "responsetype_set": [
+        "text_data",
+        "text_data",
+        "text_data"
+      ],
+      "response_set": [
+        "huwa",
+        "zako",
+        "lile"
+      ],
+      "answer": "zako"
+    },
+    {
+      "gen_question": false,
+      "stimulus_type": "text_data",
+      "question_show": true,
+      "answer_type": "text_data",
+      "question_type": "multiple-choice",
+      "stimulus": "_ _ ko",
+      "question_say": true,
+      "responsetype_set": [
+        "text_data",
+        "text_data",
+        "text_data"
+      ],
+      "response_set": [
+        "joto",
+        "hizo",
+        "jiko"
+      ],
+      "answer": "jiko"
+    },
+    {
+      "gen_question": false,
+      "stimulus_type": "text_data",
+      "question_show": true,
+      "answer_type": "text_data",
+      "question_type": "multiple-choice",
+      "stimulus": "_ _ ko",
+      "question_say": true,
+      "responsetype_set": [
+        "text_data",
+        "text_data",
+        "text_data"
+      ],
+      "response_set": [
+        "yake",
+        "sote",
+        "huko"
+      ],
+      "answer": "huko"
+    },
+    {
+      "gen_question": false,
+      "stimulus_type": "text_data",
+      "question_show": true,
+      "answer_type": "text_data",
+      "question_type": "multiple-choice",
+      "stimulus": "_ _ ko",
+      "question_say": true,
+      "responsetype_set": [
+        "text_data",
+        "text_data",
+        "text_data"
+      ],
+      "response_set": [
+        "hasa",
+        "zipu",
+        "yuko"
+      ],
+      "answer": "yuko"
+    },
+    {
+      "gen_question": false,
+      "stimulus_type": "text_data",
+      "question_show": true,
+      "answer_type": "text_data",
+      "question_type": "multiple-choice",
+      "stimulus": "_ _ ko",
+      "question_say": true,
+      "responsetype_set": [
+        "text_data",
+        "text_data",
+        "text_data"
+      ],
+      "response_set": [
+        "hapa",
+        "zako",
+        "nasi"
+      ],
+      "answer": "zako"
+    },
+    {
+      "gen_question": false,
+      "stimulus_type": "text_data",
+      "question_show": true,
+      "answer_type": "text_data",
+      "question_type": "multiple-choice",
+      "stimulus": "_ _ ko",
+      "question_say": true,
+      "responsetype_set": [
+        "text_data",
+        "text_data",
+        "text_data"
+      ],
+      "response_set": [
+        "niko",
+        "meza",
+        "nipe"
+      ],
+      "answer": "niko"
+    },
+    {
+      "gen_question": false,
+      "stimulus_type": "text_data",
+      "question_show": true,
+      "answer_type": "text_data",
+      "question_type": "multiple-choice",
+      "stimulus": "_ _ ko",
+      "question_say": true,
+      "responsetype_set": [
+        "text_data",
+        "text_data",
+        "text_data"
+      ],
+      "response_set": [
+        "lako",
+        "ebei",
+        "lele"
+      ],
+      "answer": "lako"
+    },
+    {
+      "gen_question": false,
+      "stimulus_type": "text_data",
+      "question_show": true,
+      "answer_type": "text_data",
+      "question_type": "multiple-choice",
+      "stimulus": "_ _ ko",
+      "question_say": true,
+      "responsetype_set": [
+        "text_data",
+        "text_data",
+        "text_data"
+      ],
+      "response_set": [
+        "meza",
+        "koko",
+        "geni"
+      ],
+      "answer": "koko"
+    },
+    {
+      "gen_question": false,
+      "stimulus_type": "text_data",
+      "question_show": true,
+      "answer_type": "text_data",
+      "question_type": "multiple-choice",
+      "stimulus": "_ _ ko",
+      "question_say": true,
+      "responsetype_set": [
+        "text_data",
+        "text_data",
+        "text_data"
+      ],
+      "response_set": [
+        "nawe",
+        "niko",
+        "pana"
+      ],
+      "answer": "niko"
+    },
+    {
+      "gen_question": false,
+      "stimulus_type": "text_data",
+      "question_show": true,
+      "answer_type": "text_data",
+      "question_type": "multiple-choice",
+      "stimulus": "_ _ ko",
+      "question_say": true,
+      "responsetype_set": [
+        "text_data",
+        "text_data",
+        "text_data"
+      ],
+      "response_set": [
+        "woga",
+        "soko",
+        "mpya"
+      ],
+      "answer": "soko"
+    }
+  ],
+  "gen_answertype": "text_data",
+  "gen_answerSet": [],
+  "gen_responseSet": [],
+  "response_replacement": false,
+  "question_sequence": "RANDOM",
+  "question_count": 10,
+  "view_background": {
+    "kind": "squares",
+    "colorbase": "#666666",
+    "colorchoice": "fixed",
+    "layout": "grid",
+    "layoutcount": 0,
+    "colors": [
+      -6053120,
+      -7566336,
+      -2500352,
+      -5066240
+    ],
+    "style": "primitives"
+  },
+  "gen_responsetype": "text_data",
+  "banner_color": "#000066",
+  "gen_stimulustype": "text_data",
+  "gen_stimulusSet": []
+}

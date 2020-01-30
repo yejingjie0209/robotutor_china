@@ -1,0 +1,44 @@
+{
+  //"language":"LANG_SW",
+
+  "scenedata": [
+	{
+	  "id":"word_copy",
+
+	  "oncreate":[
+        {"type": "COMMAND", "id": "SinputBG", "method": "setBackground", "parms": "#A5C4D4:String", "features":"FTR_LETTERS|FTR_NUMBERS"},
+
+		{"type": "COMMAND", "id": "SaudioReplay",   "method": "setVisibility", "parms": "VISIBLE:String", "features":"FTR_DICTATION"},
+		{"type": "COMMAND", "id": "SstimulusFrame", "method": "setVisibility", "parms": "VISIBLE:String", "features":"!FTR_DICTATION&!FTR_NO_STIM"},
+		  {"type": "COMMAND", "id": "SresponseviewFrame", "method": "setVisibility", "parms": "VISIBLE:String", "features":"FTR_SEN"}
+//		  {"type": "COMMAND", "id": "SWritingBoxLink", "method": "setVisibility", "parms": "VISIBLE:String", "features":"FTR_SEN"}
+	  ],
+	  "onenter":[
+	  ],
+	  "features":""
+	}
+  ],
+
+	// This maps soundpackages in type_audio (the soundMap <key>) to audio resources
+	//
+	// The effect sound packages are special as it is not language sensitive
+	//
+	// type     - the classMap2 type
+	// language - the language feature to use - see TCONST.LANG_AUTO
+	// path     - the resource path relative to assets/tutors/trackdata/LIBRARY/audio/<language>
+
+	"soundMap" : {
+		"default":       {"type": "SOUNDMAP", "language": "LANG_AUTO",   "path": "cmu/xprize/writing"},
+		"xprize":        {"type": "SOUNDMAP", "language": "LANG_AUTO",   "path": "cmu/xprize/global"},
+		"counting":      {"type": "SOUNDMAP", "language": "LANG_AUTO",   "path": "cmu/xprize/counting"},
+		"arithmetic":    {"type": "SOUNDMAP", "language": "LANG_AUTO",   "path": "cmu/xprize/arithmetic"},
+		"words":         {"type": "SOUNDMAP", "language": "LANG_AUTO",   "path": "cmu/xprize/literacy"},
+        "numbers":       {"type": "SOUNDMAP", "language": "LANG_AUTO",   "path": "cmu/xprize/global/numbers"},
+        "letters":       {"type": "SOUNDMAP", "language": "LANG_AUTO",   "path": "cmu/xprize/global/letters"},
+		"story":         {"type": "SOUNDMAP", "language": "LANG_AUTO",   "path": "cmu/xprize/story_reading/n/n_n - replaced in TRtcomponent:setDataSource"},
+		"sentence":     {"type": "SOUNDMAP", "language": "LANG_AUTO",    "path": "cmu/xprize/sentence"}
+	},
+
+
+	"navigatorType":"SIMPLE_NAVIGATOR"
+}

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--The order of these matters - the first matched gets drawn-->
+    <item
+        app:state_skillnext="true"
+        android:drawable="@drawable/debugnext"/>
+    <item
+        app:state_skillharder="true"
+        android:drawable="@drawable/debugharder"/>
+    <item
+        app:state_skilleasier="true"
+        android:drawable="@drawable/debugeasier"/>
+    <item
+        app:state_skillcurrent="true"
+        android:drawable="@drawable/debugcurrent"/>
+    <item
+        app:state_skillerror="true"
+        android:drawable="@drawable/debugerror"/>
+    <item
+        app:state_skillnull="true"
+        android:drawable="@drawable/debugnull"/>
+
+
+    <item
+        app:tutor_akira="true"
+        android:drawable="@drawable/thumb_akira" />
+
+    <item
+        app:tutor_bpop_num="true"
+        android:drawable="@drawable/thumb_bpop_num_1" />
+
+    <item
+        app:tutor_bpop_ltr="true"
+        android:drawable="@drawable/thumb_bpop_ltr_lc_1" />
+
+    <item
+        app:tutor_missingno="true"
+        android:drawable="@drawable/thumb_missingno" />
+
+    <item
+        app:tutor_compare="true"
+        android:drawable="@drawable/thumb_compare" />
+
+    <item
+        app:tutor_countingx_1="true"
+        android:drawable="@drawable/thumb_countingx_1" />
+
+    <item
+        app:tutor_countingx_10="true"
+        android:drawable="@drawable/thumb_countingx_10" />
+
+    <item
+        app:tutor_countingx_100="true"
+        android:drawable="@drawable/thumb_countingx_100" />
+
+    <item
+        app:tutor_math="true"
+        android:drawable="@drawable/thumb_math" />
+
+    <item
+        app:tutor_numberscale="true"
+        android:drawable="@drawable/thumb_numscale" />
+
+    <item
+        app:tutor_story_1="true"
+        android:drawable="@drawable/thumb_story_blue" />
+
+    <item
+        app:tutor_story_2="true"
+        android:drawable="@drawable/thumb_story_pink" />
+
+    <item
+        app:tutor_story_3="true"
+        android:drawable="@drawable/thumb_story_green" />
+
+    <item
+        app:tutor_story_4="true"
+        android:drawable="@drawable/thumb_story_violet" />
+
+    <item
+        app:tutor_story_5="true"
+        android:drawable="@drawable/thumb_story_red" />
+
+    <item
+        app:tutor_story_nonstory="true"
+        android:drawable="@drawable/thumb_story_gray" />
+
+    <item
+        app:tutor_song="true"
+        android:drawable="@drawable/thumb_song" />
+
+    <item
+        app:tutor_numcompare="true"
+        android:drawable="@drawable/thumb_numcompare" />
+
+    <item
+        app:tutor_picmatch="true"
+        android:drawable="@drawable/thumb_picture_matching" />
+
+    <item
+        app:tutor_placevalue="true"
+        android:drawable="@drawable/thumb_place_value" />
+
+    <item
+        app:tutor_bigmath="true"
+        android:drawable="@drawable/thumb_bigmath_1d" />
+
+    <item
+        app:tutor_spelling="true"
+        android:drawable="@drawable/thumb_spelling_tutor" />
+
+    <item
+        app:tutor_write="true"
+        android:drawable="@drawable/thumb_write" />
+
+    <item
+        android:drawable="@drawable/debugnormal"/>
+
+</selector>

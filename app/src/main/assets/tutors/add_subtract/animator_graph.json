@@ -1,0 +1,815 @@
+{
+  "animatorMap": {
+    "COMMENT": "Animation Graph for the Add/Subtract Tutor",
+
+    "add_subtract": {
+
+      "type": "ANIMATOR",
+      "title": "Add/Subtract tutor",
+      "COMMENT": "This tutor is designed for the Add/Subtract tutor.",
+      "version": "1.0.0",
+      "rootnode": "DEMO_SELECT",
+
+      "queueMap": {
+
+        "CHIME_FEEDBACK": {
+          "type": "QUEUE",
+          "COMMENT": "Chime when user taps icons in ",
+          "preenter": [],
+          "reuse": true,
+          "tracks": [
+            {"name": "LOG_EVENT", "type": "QUEUEDCOMMAND", "id": "SAddSubtract", "method": "logState", "parms": "type#feedback,value#CHIME_FEEDBACK:String", "features":""},
+
+            {"name":"Play Chimes:", "type": "QUEUEDAUDIO", "command": "PLAY","soundpackage":"chimes", "soundsource": "{{TestChimes}}.mp3", "repeat":false, "volume": "0.7", "mode":"flow", "features": ""}
+          ],
+          "preexit": [
+          ],
+          "edges": [
+          ]
+        },
+
+        "MATH_SCAFFOLD_BEHAVIOR": {
+          "type": "QUEUE",
+          "COMMENT": "Chime when user taps icons in ",
+          "preenter": [],
+          "reuse": true,
+          "tracks": [
+            {"name": "LOG_EVENT", "type": "QUEUEDCOMMAND", "id": "SAddSubtract", "method": "logState", "parms": "type#feedback,value#MATH_SCAFFOLD_BEHAVIOR:String", "features":""},
+
+            {"name":"Show Scaffold:", "type": "QUEUEDCOMMAND", "id": "SAddSubtract", "method": "setDotBagsVisible", "parms":"TRUE:Boolean", "features": "FTR_NO_ZEROS"},
+
+            {"name":"Play Tap...",       "type": "QUEUEDAUDIO", "command": "PLAY", "soundsource": "Tap on the.mp3",                    "soundpackage":"default", "volume": 1.0, "mode":"flow", "features": "ASM_ADD&FTR_NO_ZEROS"},
+            {"name":"Play <shape>...",   "type": "QUEUEDAUDIO", "command": "PLAY", "soundsource": "{{SAddSubtract.image}}.mp3",        "soundpackage":"shapes",  "volume": 1.0, "mode":"flow", "features": "ASM_ADD&FTR_NO_ZEROS"},
+            {"name":"Play And Count...", "type": "QUEUEDAUDIO", "command": "PLAY", "soundsource": "and count them one by one.mp3",     "soundpackage":"default", "volume": 1.0, "mode":"flow", "features": "ASM_ADD&FTR_NO_ZEROS"},
+
+            //******************
+
+            {"name":"Play Tap...",       "type": "QUEUEDAUDIO", "command": "PLAY", "soundsource": "Tap on the.mp3",                     "soundpackage":"default", "volume": 1.0, "mode":"flow", "features": "ASM_SUB&FTR_NO_ZEROS"},
+            {"name":"Play <shape>...",   "type": "QUEUEDAUDIO", "command": "PLAY", "soundsource": "{{SAddSubtract.image}}.mp3",         "soundpackage":"shapes",  "volume": 1.0, "mode":"flow", "features": "ASM_SUB&FTR_NO_ZEROS"},
+            {"name":"Play And Count...", "type": "QUEUEDAUDIO", "command": "PLAY", "soundsource": "to take them away.mp3",              "soundpackage":"default", "volume": 1.0, "mode":"flow", "features": "ASM_SUB&FTR_NO_ZEROS"},
+
+            //******************
+
+            {"name":"Adding zero...",         "type": "QUEUEDAUDIO", "command": "PLAY", "soundsource": "Remember that any number plus 0 is just the number.mp3",  "soundpackage":"default", "volume": 1.0, "mode":"flow", "features": "ASM_ADD&FTR_OP_ZERO"},
+            {"name":"Adding to zero...",      "type": "QUEUEDAUDIO", "command": "PLAY", "soundsource": "Remember that 0 plus any number is just the number.mp3",  "soundpackage":"default", "volume": 1.0, "mode":"flow", "features": "ASM_ADD&FTR_ZERO_OP"},
+            {"name":"Adding zero to zero...", "type": "QUEUEDAUDIO", "command": "PLAY", "soundsource": "Remember that 0 plus 0 is 0.mp3",                         "soundpackage":"default", "volume": 1.0, "mode":"flow", "features": "ASM_ADD&FTR_ALL_ZEROS"},
+
+            //******************
+
+            {"name":"Subtract zero from...",    "type": "QUEUEDAUDIO", "command": "PLAY", "soundsource": "Remember that any number minus 0 is just the number.mp3",  "soundpackage":"default", "volume": 1.0, "mode":"flow", "features": "ASM_SUB&FTR_OP_ZERO"},
+            {"name":"Subtract zero to zero...", "type": "QUEUEDAUDIO", "command": "PLAY", "soundsource": "Remember that 0 minus 0 is 0.mp3",                         "soundpackage":"default", "volume": 1.0, "mode":"flow", "features": "ASM_SUB&FTR_ALL_ZEROS"}
+          ],
+          "preexit": [
+          ],
+          "edges": [
+          ]
+        },
+
+
+        "MATH_INSTRUCTION_ADD_BEHAVIOR": {
+          "type": "QUEUE",
+          "COMMENT": "",
+          "preenter": [],
+          "reuse": true,
+          "tracks": [
+            {"name": "LOG_EVENT", "type": "QUEUEDCOMMAND", "id": "SAddSubtract", "method": "logState", "parms": "type#feedback,value#MATH_INSTRUCTION_ADD_BEHAVIOR:String", "features":""},
+
+            {"name":"Introduction Audio", "type": "QUEUEDAUDIO", "command": "PLAY", "soundsource": "Lets add some numbers now.mp3",            "soundpackage":"default", "volume": 1.0, "mode":"flow", "features": ""},
+
+            {"name":"Zoom Operator:",     "type": "QUEUEDCOMMAND", "id": "SAddSubtract", "method": "zoomOperator",  "features": ""},
+            {"name":"This is ...",        "type": "QUEUEDAUDIO", "command": "PLAY", "soundsource": "This is called a plus sign.mp3",           "soundpackage":"default", "volume": 1.0, "mode":"flow", "features": ""},
+
+            {"name":"Show Scaffold:",     "type": "QUEUEDCOMMAND", "id": "SAddSubtract", "method": "setDotBagsVisible", "parms":"TRUE:Boolean", "features": ""},
+            {"name":"Adding 3 + 2...",    "type": "QUEUEDAUDIO", "command": "PLAY", "soundsource": "Adding 3 things plus 2 things means--.mp3",  "soundpackage":"default", "volume": 1.0, "mode":"flow", "features": ""},
+            {"name":"Let's Tap...",       "type": "QUEUEDAUDIO", "command": "PLAY", "soundsource": "Please tap on the three things to add them to the two things.mp3",  "soundpackage":"default", "volume": 1.0, "mode":"flow", "features": ""}
+          ],
+          "preexit": [],
+          "edges": [
+          ]
+        },
+
+
+        "MATH_INSTRUCTION_ADD_0_BEHAVIOR": {
+          "type": "QUEUE",
+          "COMMENT": "",
+          "preenter": [],
+          "reuse": true,
+          "tracks": [
+            {"name": "LOG_EVENT", "type": "QUEUEDCOMMAND", "id": "SAddSubtract", "method": "logState", "parms": "type#feedback,value#MATH_INSTRUCTION_ADD_0_BEHAVIOR:String", "features":""},
+
+            {"name":"Introduction Audio", "type": "QUEUEDAUDIO", "command": "PLAY", "soundsource": "Lets add some numbers now.mp3",            "soundpackage":"default", "volume": 1.0, "mode":"flow", "features": ""},
+            {"name":"Play Tap...",        "type": "QUEUEDAUDIO", "command": "PLAY", "soundsource": "What about adding something plus 0.mp3",   "soundpackage":"default", "volume": 1.0, "mode":"flow", "features": ""},
+
+            {"name":"Show Scaffold:",     "type": "QUEUEDCOMMAND", "id": "SAddSubtract", "method": "setDotBagsVisible", "parms":"TRUE:Boolean", "features": ""},
+
+            {"name":"Adding 3 + 2...",    "type": "QUEUEDAUDIO", "command": "PLAY", "soundsource": "Adding 3 things plus 0 things means--.mp3",  "soundpackage":"default", "volume": 1.0, "mode":"flow", "features": ""},
+            {"name":"Let's Tap...",       "type": "QUEUEDAUDIO", "command": "PLAY", "soundsource": "Please tap on the 3 things.mp3",  "soundpackage":"default", "volume": 1.0, "mode":"flow", "features": ""}
+          ],
+          "preexit": [],
+          "edges": [
+          ]
+        },
+
+        "MATH_INSTRUCTION_0_ADD_BEHAVIOR": {
+          "type": "QUEUE",
+          "COMMENT": "",
+          "preenter": [],
+          "reuse": true,
+          "tracks": [
+            {"name": "LOG_EVENT", "type": "QUEUEDCOMMAND", "id": "SAddSubtract", "method": "logState", "parms": "type#feedback,value#MATH_INSTRUCTION_0_ADD_BEHAVIOR:String", "features":""},
+
+            {"name":"Introduction Audio", "type": "QUEUEDAUDIO", "command": "PLAY", "soundsource": "Lets add some numbers now.mp3",            "soundpackage":"default", "volume": 1.0, "mode":"flow", "features": ""},
+            {"name":"Play Tap...",        "type": "QUEUEDAUDIO", "command": "PLAY", "soundsource": "What about adding 0 plus something.mp3",   "soundpackage":"default", "volume": 1.0, "mode":"flow", "features": ""},
+
+            {"name":"Show Scaffold:",     "type": "QUEUEDCOMMAND", "id": "SAddSubtract", "method": "setDotBagsVisible", "parms":"TRUE:Boolean", "features": ""},
+
+            {"name":"Adding 3 + 2...",    "type": "QUEUEDAUDIO", "command": "PLAY", "soundsource": "Adding 0 things plus 3 things means--.mp3",  "soundpackage":"default", "volume": 1.0, "mode":"flow", "features": ""},
+            {"name":"Let's Tap...",       "type": "QUEUEDAUDIO", "command": "PLAY", "soundsource": "Please tap on the 3 things.mp3",  "soundpackage":"default", "volume": 1.0, "mode":"flow", "features": ""}
+          ],
+          "preexit": [],
+          "edges": [
+          ]
+        },
+
+
+        "MATH_INSTRUCTION_SUB_BEHAVIOR": {
+          "type": "QUEUE",
+          "COMMENT": "",
+          "preenter": [],
+          "reuse": true,
+          "tracks": [
+            {"name": "LOG_EVENT", "type": "QUEUEDCOMMAND", "id": "SAddSubtract", "method": "logState", "parms": "type#feedback,value#MATH_INSTRUCTION_SUB_BEHAVIOR:String", "features":""},
+
+            {"name":"Introduction Audio", "type": "QUEUEDAUDIO", "command": "PLAY", "soundsource": "Lets subtract some numbers now.mp3",       "soundpackage":"default", "volume": 1.0, "mode":"flow", "features": ""},
+            {"name":"Play Tap...",        "type": "QUEUEDAUDIO", "command": "PLAY", "soundsource": "This is called a minus sign.mp3",           "soundpackage":"default", "volume": 1.0, "mode":"flow", "features": ""},
+
+            {"name":"Show Scaffold:",     "type": "QUEUEDCOMMAND", "id": "SAddSubtract", "method": "setDotBagsVisible", "parms":"TRUE:Boolean", "features": ""},
+
+            {"name":"Adding 3 + 2...",    "type": "QUEUEDAUDIO", "command": "PLAY", "soundsource": "Subtracting 3 things minus 2 things means--.mp3",  "soundpackage":"default", "volume": 1.0, "mode":"flow", "features": ""},
+            {"name":"Let's Tap...",       "type": "QUEUEDAUDIO", "command": "PLAY", "soundsource": "Please tap on the two things and see how many are left.mp3",  "soundpackage":"default", "volume": 1.0, "mode":"flow", "features": ""}
+          ],
+          "preexit": [],
+          "edges": [
+          ]
+        },
+
+
+        "MATH_INSTRUCTION_SUB_0_BEHAVIOR": {
+          "type": "QUEUE",
+          "COMMENT": "",
+          "preenter": [],
+          "reuse": true,
+          "tracks": [
+            {"name": "LOG_EVENT", "type": "QUEUEDCOMMAND", "id": "SAddSubtract", "method": "logState", "parms": "type#feedback,value#MATH_INSTRUCTION_SUB_0_BEHAVIOR:String", "features":""},
+
+            {"name":"Introduction Audio", "type": "QUEUEDAUDIO", "command": "PLAY", "soundsource": "Lets subtract some numbers now.mp3",            "soundpackage":"default", "volume": 1.0, "mode":"flow", "features": ""},
+            {"name":"Play Tap...",        "type": "QUEUEDAUDIO", "command": "PLAY", "soundsource": "What about subtracting something minus 0.mp3",  "soundpackage":"default", "volume": 1.0, "mode":"flow", "features": ""},
+
+            {"name":"Show Scaffold:",     "type": "QUEUEDCOMMAND", "id": "SAddSubtract", "method": "setDotBagsVisible", "parms":"TRUE:Boolean", "features": ""},
+
+            {"name":"Adding 3 + 2...",    "type": "QUEUEDAUDIO", "command": "PLAY", "soundsource": "Subtracting 3 things minus 0 things means--.mp3",  "soundpackage":"default", "volume": 1.0, "mode":"flow", "features": ""},
+
+            {"name":"", "type": "QUEUEDCOMMAND", "id": "SAddSubtract", "method": "highlightResult", "parms": "", "features": "" },
+
+            {"name":"", "type": "QUEUEDAUDIO", "command": "PLAY", "soundsource": "Tap here and please write your answer.mp3",    "soundpackage":"default", "volume": 1.0, "mode":"flow", "features": ""}
+          ],
+          "preexit": [],
+          "edges": [
+          ]
+        },
+
+
+        "SCAFFOLD_RESULT_BEHAVIOR": {
+          "type": "QUEUE",
+          "COMMENT": "Chime when user taps icons in ",
+          "preenter": [],
+          "reuse": true,
+          "tracks": [
+            {"name": "LOG_EVENT", "type": "QUEUEDCOMMAND", "id": "SAddSubtract", "method": "logState", "parms": "type#feedback,value#SCAFFOLD_RESULT_BEHAVIOR:String", "features":""},
+
+            {"name":"CANCEL_SCAFFOLD_BEHAVIOR", "type": "QUEUEDCOMMAND", "id": "MATH_SCAFFOLD_BEHAVIOR", "method": "cancelNode", "parms": "",  "features":""},
+
+            {"name":"CANCEL_SCAFFOLD_BEHAVIOR", "type": "QUEUEDCOMMAND", "id": "MATH_INSTRUCTION_ADD_BEHAVIOR",   "method": "cancelNode", "parms": "",  "features":""},
+            {"name":"CANCEL_SCAFFOLD_BEHAVIOR", "type": "QUEUEDCOMMAND", "id": "MATH_INSTRUCTION_ADD_0_BEHAVIOR", "method": "cancelNode", "parms": "",  "features":""},
+            {"name":"CANCEL_SCAFFOLD_BEHAVIOR", "type": "QUEUEDCOMMAND", "id": "MATH_INSTRUCTION_0_ADD_BEHAVIOR", "method": "cancelNode", "parms": "",  "features":""},
+            {"name":"CANCEL_SCAFFOLD_BEHAVIOR", "type": "QUEUEDCOMMAND", "id": "MATH_INSTRUCTION_SUB_BEHAVIOR",   "method": "cancelNode", "parms": "",  "features":""},
+            {"name":"CANCEL_SCAFFOLD_BEHAVIOR", "type": "QUEUEDCOMMAND", "id": "MATH_INSTRUCTION_SUB_0_BEHAVIOR", "method": "cancelNode", "parms": "",  "features":""},
+
+            {"name":"", "type": "QUEUEDAUDIO", "command": "PLAY", "soundsource": "How many things do you get.mp3",                "soundpackage":"default", "volume": 1.0, "mode":"flow", "features": "ASM_ADD"},
+            {"name":"", "type": "QUEUEDAUDIO", "command": "PLAY", "soundsource": "How many things are left.mp3",                  "soundpackage":"default", "volume": 1.0, "mode":"flow", "features": "ASM_SUB"},
+
+            {"name":"", "type": "QUEUEDCOMMAND", "id": "SAddSubtract", "method": "highlightResult", "parms": "", "features": "" },
+
+            {"name":"", "type": "QUEUEDAUDIO", "command": "PLAY", "soundsource": "Tap here and please write your answer.mp3",    "soundpackage":"default", "volume": 1.0, "mode":"flow", "features": ""}
+
+          ],
+          "preexit": [],
+          "edges": []
+        },
+
+
+        "CANCEL_FEEDBACK_BEHAVIORS": {
+          "type": "QUEUE",
+          "COMMENT": "Chime when user taps icons in ",
+          "preenter": [],
+          "reuse": true,
+          "tracks": [
+            {"name": "LOG_EVENT", "type": "QUEUEDCOMMAND", "id": "SAddSubtract", "method": "logState", "parms": "type#feedback,value#CANCEL_FEEDBACK_BEHAVIORS:String", "features":""},
+
+            {"name":"CANCEL_SCAFFOLD_POST",     "type": "QUEUEDCOMMAND", "id": "SAddSubtract", "method": "cancelPost", "parms": "SHOW_SCAFFOLD_BEHAVIOR:String",  "features":""},
+
+            {"name":"CANCEL_SCAFFOLD_BEHAVIOR", "type": "QUEUEDCOMMAND", "id": "MATH_SCAFFOLD_BEHAVIOR",   "method": "cancelNode", "parms": "",  "features":""},
+            {"name":"CANCEL_SCAFFOLD_RESULT",   "type": "QUEUEDCOMMAND", "id": "SCAFFOLD_RESULT_BEHAVIOR", "method": "cancelNode", "parms": "",  "features":""},
+
+            {"name":"CANCEL_SCAFFOLD_BEHAVIOR", "type": "QUEUEDCOMMAND", "id": "MATH_INSTRUCTION_ADD_BEHAVIOR",   "method": "cancelNode", "parms": "",  "features":""},
+            {"name":"CANCEL_SCAFFOLD_BEHAVIOR", "type": "QUEUEDCOMMAND", "id": "MATH_INSTRUCTION_ADD_0_BEHAVIOR", "method": "cancelNode", "parms": "",  "features":""},
+            {"name":"CANCEL_SCAFFOLD_BEHAVIOR", "type": "QUEUEDCOMMAND", "id": "MATH_INSTRUCTION_0_ADD_BEHAVIOR", "method": "cancelNode", "parms": "",  "features":""},
+            {"name":"CANCEL_SCAFFOLD_BEHAVIOR", "type": "QUEUEDCOMMAND", "id": "MATH_INSTRUCTION_SUB_BEHAVIOR",   "method": "cancelNode", "parms": "",  "features":""},
+            {"name":"CANCEL_SCAFFOLD_BEHAVIOR", "type": "QUEUEDCOMMAND", "id": "MATH_INSTRUCTION_SUB_0_BEHAVIOR", "method": "cancelNode", "parms": "",  "features":""}
+          ],
+          "preexit": [
+          ],
+          "edges": [
+          ]
+        },
+
+
+        "CANCEL_DEMO_BEHAVIORS": {
+          "type": "QUEUE",
+          "COMMENT": "Chime when user taps icons in ",
+          "preenter": [],
+          "reuse": true,
+          "tracks": [
+            {"name": "LOG_EVENT", "type": "QUEUEDCOMMAND", "id": "SAddSubtract", "method": "logState", "parms": "type#feedback,value#CANCEL_DEMO_BEHAVIORS:String", "features":""},
+
+            {"name":"CANCEL_SCAFFOLD_BEHAVIOR", "type": "QUEUEDCOMMAND", "id": "MATH_INSTRUCTION_ADD_BEHAVIOR",   "method": "cancelNode", "parms": "",  "features":""},
+            {"name":"CANCEL_SCAFFOLD_BEHAVIOR", "type": "QUEUEDCOMMAND", "id": "MATH_INSTRUCTION_ADD_0_BEHAVIOR", "method": "cancelNode", "parms": "",  "features":""},
+            {"name":"CANCEL_SCAFFOLD_BEHAVIOR", "type": "QUEUEDCOMMAND", "id": "MATH_INSTRUCTION_0_ADD_BEHAVIOR", "method": "cancelNode", "parms": "",  "features":""},
+            {"name":"CANCEL_SCAFFOLD_BEHAVIOR", "type": "QUEUEDCOMMAND", "id": "MATH_INSTRUCTION_SUB_BEHAVIOR",   "method": "cancelNode", "parms": "",  "features":""},
+            {"name":"CANCEL_SCAFFOLD_BEHAVIOR", "type": "QUEUEDCOMMAND", "id": "MATH_INSTRUCTION_SUB_0_BEHAVIOR", "method": "cancelNode", "parms": "",  "features":""}
+          ],
+          "preexit": [
+          ],
+          "edges": [
+          ]
+        },
+
+
+        "CANCEL_SCAFFOLD_BEHAVIORS": {
+          "type": "QUEUE",
+          "COMMENT": "Chime when user taps icons in ",
+          "preenter": [],
+          "reuse": true,
+          "tracks": [
+            {"name": "LOG_EVENT", "type": "QUEUEDCOMMAND", "id": "SAddSubtract", "method": "logState", "parms": "type#feedback,value#CANCEL_SCAFFOLD_BEHAVIORS:String", "features":""},
+
+            {"name":"CANCEL_SCAFFOLD_POST",     "type": "QUEUEDCOMMAND", "id": "SAddSubtract", "method": "cancelPost", "parms": "SHOW_SCAFFOLD_BEHAVIOR:String",  "features":""},
+
+            {"name":"CANCEL_SCAFFOLD_BEHAVIOR", "type": "QUEUEDCOMMAND", "id": "MATH_SCAFFOLD_BEHAVIOR",   "method": "cancelNode", "parms": "",  "features":""},
+            {"name":"CANCEL_SCAFFOLD_RESULT",   "type": "QUEUEDCOMMAND", "id": "SCAFFOLD_RESULT_BEHAVIOR", "method": "cancelNode", "parms": "",  "features":""}
+          ],
+          "preexit": [
+          ],
+          "edges": [
+          ]
+        }
+      },
+
+
+      "nodeMap": {
+
+        "COMMENT": "@@@@@  CNodes  @@@@@",
+
+        "DEMO_SELECT": {
+          "type": "NODE",
+          "COMMENT": "Branching Node",
+          "maptype":"moduleMap",
+          "mapname": "EMPTY_MODULE",
+          "preenter":[],
+          "preexit" :[],
+          "edges": [
+            {"constraint": "FTR_DEMO", "edge": "DEMO_STATE"},
+            {"constraint": "",         "edge": "INTRO_STATE"}
+          ]
+        },
+
+        "DEMO_STATE": {
+          "type": "NODE",
+          "COMMENT": "Interaction Demo",
+          "maptype":"moduleMap",
+          "mapname":"DEMO_MODULE",
+          "preenter":["SET_VERSION","SET_DEMOSOURCE", "SET_SCAFFOLD_COMPLETE_BEHAVIOR", "SET_ON_ANSWER_BEHAVIOR", "SET_CHIME_BEHAVIOR", "SET_NEXT_BEHAVIOR"],
+          "preexit" :[],
+          "edges": [
+            {
+              "constraint": "",
+              "edge": "NEXTPROBLEM"
+            }
+          ]
+        },
+
+        "INTRO_STATE": {
+          "type": "NODE",
+          "COMMENT": "Intro Clip",
+          "maptype":"moduleMap",
+          "mapname": "PLAYINTRO",
+          "preenter":["SET_VERSION","SET_DATASOURCE", "SET_SCAFFOLD_BEHAVIOR", "SET_SCAFFOLD_COMPLETE_BEHAVIOR", "SET_ON_ANSWER_BEHAVIOR", "SET_CHIME_BEHAVIOR", "SET_NEXT_BEHAVIOR"],
+          "preexit" :[],
+          "edges":
+          [
+            {"constraint":"","edge": "NEXTPROBLEM"}
+          ]
+        },
+
+        // This initializes the dataset display and resets for a new set of attempts
+        //
+        "NEXTPROBLEM":{
+          "COMMENT":"This node presents the first problem.",
+          "type":"node",
+          "maptype":"moduleMap",
+          "mapname": "NEXT_PROBLEM",
+          "preenter":[],
+          "preexit" :[],
+          "edges":
+          [
+            {"constraint":"","edge":"NEXTDIGIT"}
+          ]
+        },
+
+        "NEXTDIGIT":{
+          "COMMENT":"This node ",
+          "type":"node",
+          "maptype":"moduleMap",
+          "mapname": "NEXT_DIGIT",
+          "preenter":["POST_DELAYED_SCAFFOLD","SET_WRITE_BEHAVIOR"],
+          "preexit" :["HIGHLIGHT_COLUMN"],
+          "edges":
+          [
+            {"constraint":"","edge":"USERINPUT"}
+          ]
+        },
+
+        // This waits for input
+        //
+        "USERINPUT":{
+          "COMMENT":"When the user touches for the first time",
+          "type":"node",
+          "maptype":"moduleMap",
+          "mapname": "WAIT_FOR_INPUT",
+          "preenter":["SET_INPUT_BEHAVIOR"],
+          "preexit" :["CANCEL_POST_DELAYED_SCAFFOLD", "CLR_INPUT_BEHAVIOR","CLR_WRITE_BEHAVIOR"],
+          "edges":
+          [
+            {"constraint":"FTR_DEMO_COMPLETE","edge":"DEMOCORRECT"},
+            {"constraint":"FTR_COMPLETE"     ,"edge":"PROBLEMCORRECT"},
+            {"constraint":"FTR_RIGHT"        ,"edge":"STEPCORRECT"},
+            {"constraint":""                 ,"edge":"STEPWRONG"}
+          ]
+        },
+
+        "DEMOCORRECT":{
+          "COMMENT":"When user inputs a correct answer...",
+          "type":"node",
+          "maptype":"moduleMap",
+          "mapname": "DEMOCOMPLETE",
+          "preenter":["RETRACT_DEMO"],
+          "preexit" :["SET_SCAFFOLD_BEHAVIOR"],
+          "edges":
+          [
+            {"constraint":"","edge":"NEXTPROBLEM"}
+          ]
+        },
+
+        "PROBLEMCORRECT":{
+          "COMMENT":"When user inputs a correct answer...",
+          "type":"node",
+          "maptype":"moduleMap",
+          "mapname": "PLAYCOMPLETE",
+          "preenter":[],
+          "preexit" :[],
+          "edges":
+          [
+            {"constraint":"COND_PASS1","edge":"EXITCLIP1"},
+            {"constraint":"COND_PASS2","edge":"EXITCLIP2"},
+            {"constraint":"","edge":"NEXTPROBLEM"}
+          ]
+        },
+
+        "STEPCORRECT":{
+          "COMMENT":"When user inputs a correct answer...",
+          "type":"node",
+          "maptype":"moduleMap",
+          "mapname": "PLAYCORRECT",
+          "preenter":[],
+          "preexit" :[],
+          "edges":
+          [
+
+            {"constraint":"","edge":"NEXTDIGIT"}
+          ]
+        },
+
+        "STEPWRONG":{
+          "COMMENT":"When user inputs an incorrect answer...",
+          "type":"node",
+          "maptype":"moduleMap",
+          "mapname": "PLAYWRONG",
+          "preenter":[],
+          "preexit" :[],
+          "edges":
+          [
+            {"constraint":"","edge":"USERINPUT"}
+          ]
+        },
+
+        "EXITCLIP1": {
+          "COMMENT":"Exit Clip for ALL_CORRECT",
+          "type":"node",
+          "maptype":"moduleMap",
+          "mapname": "PLAYEXIT1",
+          "preenter":[],
+          "preexit" :[],
+          "edges":
+          [
+            {"constraint":"","edge":"NEXTSCENE"}
+          ]
+        },
+
+        "EXITCLIP2": {"COMMENT":"Exit Clip for NOT_ALL_CORRECT",
+          "type":"node",
+          "maptype":"moduleMap",
+          "mapname": "PLAYEXIT2",
+          "preenter":[],
+          "preexit" :[],
+          "edges":
+          [
+            {"constraint":"","edge":"NEXTSCENE"}
+          ]
+        },
+
+        "NEXTSCENE": {
+          "type": "NODE",
+          "COMMENT": "When module is complete - move to next scene in the scenegraph",
+          "maptype":"actionMap",
+          "mapname":"GOTONEXTSCENE",
+          "preenter": [],
+          "preexit": [],
+          "edges": [
+          ]
+        }
+      },
+
+
+
+
+      "moduleMap": {
+        "COMMENT": "@@@@@  CModules  @@@@@",
+
+        "SET_DEMOSOURCE": {
+          "type":"MODULE",
+          "reuse":true,
+          "COMMENT": "Initialize the data source - ",
+          "tracks": [
+            {"name": "LOG_EVENT", "type": "QUEUEDCOMMAND", "id": "SAddSubtract", "method": "logState", "parms": "type#node,value#SET_DEMOSOURCE:String", "features":""},
+
+            {"type": "COMMAND", "id": "SAddSubtract", "method": "pushDataSource", "parms": "[file]math.demo_add.json:String",   "features":"FTR_DEMO_ADD"},
+            {"type": "COMMAND", "id": "SAddSubtract", "method": "pushDataSource", "parms": "[file]math.demo_0add.json:String",  "features":"FTR_DEMO_ZERO_ADD"},
+            {"type": "COMMAND", "id": "SAddSubtract", "method": "pushDataSource", "parms": "[file]math.demo_add0.json:String",  "features":"FTR_DEMO_ADD_ZERO"},
+            {"type": "COMMAND", "id": "SAddSubtract", "method": "pushDataSource", "parms": "[file]math.demo_sub.json:String",   "features":"FTR_DEMO_SUB"},
+            {"type": "COMMAND", "id": "SAddSubtract", "method": "pushDataSource", "parms": "[file]math.demo_sub0.json:String",  "features":"FTR_DEMO_SUB_ZERO"},
+            {"type": "COMMAND", "id": "SAddSubtract", "method": "publishFeature", "parms": "FTR_DEMO:String", "features":""}
+          ]
+        },
+
+        "DEMO_MODULE": {
+          "type":"MODULE",
+          "reuse":true,
+          "COMMENT": "Initialize the data source - ",
+
+          "tracks": [
+            {"name": "LOG_EVENT", "type": "QUEUEDCOMMAND", "id": "SAddSubtract", "method": "logState", "parms": "type#node,value#DEMO_MODULE:String", "features":""},
+
+            {"type": "COMMAND", "id": "SAddSubtract", "method": "postEvent",  "parms": "MATH_INSTRUCTION_ADD_BEHAVIOR:String",   "features":"FTR_DEMO_ADD"},
+            {"type": "COMMAND", "id": "SAddSubtract", "method": "postEvent",  "parms": "MATH_INSTRUCTION_ADD_0_BEHAVIOR:String", "features":"FTR_DEMO_ZERO_ADD"},
+            {"type": "COMMAND", "id": "SAddSubtract", "method": "postEvent",  "parms": "MATH_INSTRUCTION_0_ADD_BEHAVIOR:String", "features":"FTR_DEMO_ADD_ZERO"},
+            {"type": "COMMAND", "id": "SAddSubtract", "method": "postEvent",  "parms": "MATH_INSTRUCTION_SUB_BEHAVIOR:String",   "features":"FTR_DEMO_SUB"},
+            {"type": "COMMAND", "id": "SAddSubtract", "method": "postEvent",  "parms": "MATH_INSTRUCTION_SUB_0_BEHAVIOR:String", "features":"FTR_DEMO_SUB_ZERO"}
+          ]
+        },
+
+        "PLAYINTRO": {
+          "type": "MODULE",
+          "reuse": true,
+          "COMMENT": "TBD",
+          "tracks": [
+            {"name": "LOG_EVENT", "type": "QUEUEDCOMMAND", "id": "SAddSubtract", "method": "logState", "parms": "type#node,value#PLAYINTRO:String", "features":""},
+
+            {"name":"Introduction Audio", "type": "AUDIO", "command": "PLAY", "soundsource": "Lets add some numbers now.mp3",       "soundpackage":"default", "volume": 1.0, "mode":"flow", "features": "ASM_ADD"},
+            {"name":"Introduction Audio", "type": "AUDIO", "command": "PLAY", "soundsource": "Lets subtract some numbers now.mp3",  "soundpackage":"default", "volume": 1.0, "mode":"flow", "features": "ASM_SUB"},
+            {"name":"Introduction Audio", "type": "AUDIO", "command": "PLAY", "soundsource": "Lets multiply some numbers now.mp3",  "soundpackage":"default", "volume": 1.0, "mode":"flow", "features": "ASM_MULTI"}
+          ]
+        },
+
+        "NEXT_PROBLEM": {
+          "type": "MODULE",
+          "reuse": true,
+          "COMMENT": "TBD",
+          "tracks": [
+            {"name": "LOG_EVENT", "type": "QUEUEDCOMMAND", "id": "SAddSubtract", "method": "logState", "parms": "type#node,value#NEXT_PROBLEM:String", "features":""},
+
+            {"type": "COMMAND", "id": "SAddSubtract", "method": "next", "features": ""}
+          ]
+        },
+
+        "NEXT_DIGIT": {
+          "type": "MODULE",
+          "reuse": true,
+          "COMMENT": "TBD",
+          "tracks": [
+            {"name": "LOG_EVENT", "type": "QUEUEDCOMMAND", "id": "SAddSubtract", "method": "logState", "parms": "type#node,value#NEXT_DIGIT:String", "features":""},
+
+            {"type": "COMMAND", "id": "SAddSubtract", "method": "nextDigit", "features": ""}
+          ]
+        },
+
+        "HIGHLIGHT_COLUMN": {
+          "type": "MODULE",
+          "reuse": true,
+          "COMMENT": "TBD",
+          "tracks": [
+            {"name": "LOG_EVENT", "type": "QUEUEDCOMMAND", "id": "SAddSubtract", "method": "logState", "parms": "type#node,value#HIGHLIGHT_COLUMN:String", "features":""},
+
+            {"type": "COMMAND", "id":"SAddSubtract", "method":"highlightCurrentColumn", "parms":"", "features":""}
+          ]
+        },
+
+        // NOTES:
+        // AUDIO soundsource(s) are now relative to a soundpackage - see the tutor_descriptor to see its structure.
+        // The "default" sound package is used if none is specified
+        // The effect sound packages are special as it is not language sensitive
+        //
+        "PLAYCORRECT": {
+          "type": "MODULE",
+          "reuse": true,
+          "COMMENT": "TBD",
+          "tracks": [
+            {"name": "LOG_EVENT", "type": "QUEUEDCOMMAND", "id": "SAddSubtract", "method": "logState", "parms": "type#node,value#PLAYCORRECT:String", "features":""},
+
+            {"type": "AUDIO", "command": "PLAY", "soundsource": "Right.mp3", "soundpackage":"default", "volume": 1.0, "mode":"event", "features": ""}
+          ]
+        },
+
+        "PLAYCOMPLETE": {
+          "type": "MODULE",
+          "reuse": true,
+          "COMMENT": "TBD",
+          "tracks": [
+            {"name": "LOG_EVENT", "type": "QUEUEDCOMMAND", "id": "SAddSubtract", "method": "logState", "parms": "type#node,value#PLAYCOMPLETE:String", "features":""},
+
+            {"type": "AUDIO", "command": "PLAY", "soundsource": "Good.mp3", "soundpackage":"default", "volume": 1.0, "mode":"event", "features": ""},
+
+            {"type": "COMMAND", "id": "SAddSubtract", "method": "postEvent",  "parms": "NEXT_NODE:String|1000:Integer", "features":""},
+            {"type": "COMMAND", "cmd": "WAIT"}
+          ]
+        },
+
+        "DEMOCOMPLETE": {
+          "type": "MODULE",
+          "reuse": true,
+          "COMMENT": "TBD",
+          "tracks": [
+            {"name": "LOG_EVENT", "type": "QUEUEDCOMMAND", "id": "SAddSubtract", "method": "logState", "parms": "type#node,value#DEMOCOMPLETE:String", "features":""},
+
+            // Pace the problem highlight / wiggle based on the language
+            {"name":"Show Scaffold:",     "type": "QUEUEDCOMMAND", "id": "SAddSubtract", "method": "animateTutorial", "parms": "600:Integer", "features": "LANG_EN"},
+            {"name":"Show Scaffold:",     "type": "QUEUEDCOMMAND", "id": "SAddSubtract", "method": "animateTutorial", "parms": "1200:Integer", "features": "LANG_SW"},
+
+            {"type": "AUDIO", "command": "PLAY", "soundsource": "So 3 plus 2 is 5.mp3",                               "soundpackage":"default", "volume": 1.0, "mode":"flow", "features": "FTR_DEMO_ADD"},
+
+            {"type": "AUDIO", "command": "PLAY", "soundsource": "So 0 plus 3 is 3.mp3",                                "soundpackage":"default", "volume": 1.0, "mode":"flow", "features": "FTR_DEMO_ADD_ZERO"},
+            {"type": "AUDIO", "command": "PLAY", "soundsource": "In fact 0 plus any number is just the number.mp3",    "soundpackage":"default", "volume": 1.0, "mode":"flow", "features": "FTR_DEMO_ADD_ZERO"},
+
+            {"type": "AUDIO", "command": "PLAY", "soundsource": "So 3 plus 0 is 3.mp3",                                "soundpackage":"default", "volume": 1.0, "mode":"flow", "features": "FTR_DEMO_ZERO_ADD"},
+            {"type": "AUDIO", "command": "PLAY", "soundsource": "In fact any number plus 0 is just the number.mp3",    "soundpackage":"default", "volume": 1.0, "mode":"flow", "features": "FTR_DEMO_ZERO_ADD"},
+
+            {"type": "AUDIO", "command": "PLAY", "soundsource": "So 3 minus 2 is 1.mp3",                               "soundpackage":"default", "volume": 1.0, "mode":"flow", "features": "FTR_DEMO_SUB"},
+
+            {"type": "AUDIO", "command": "PLAY", "soundsource": "So 3 minus 0 is 3.mp3",                               "soundpackage":"default", "volume": 1.0, "mode":"flow", "features": "FTR_DEMO_SUB_ZERO"},
+            {"type": "AUDIO", "command": "PLAY", "soundsource": "In fact any number minus 0 is just the number.mp3",   "soundpackage":"default", "volume": 1.0, "mode":"flow", "features": "FTR_DEMO_SUB_ZERO"},
+
+            {"type": "COMMAND", "id": "SAddSubtract", "method": "popDataSource", "features":""},
+
+            {"type": "COMMAND", "id": "SAddSubtract", "method": "postEvent",  "parms": "NEXT_NODE:String|1000:Integer", "features":""},
+            {"type": "COMMAND", "cmd": "WAIT"},
+
+            {"type": "AUDIO", "command": "PLAY", "soundsource": "Now you try it.mp3",   "soundpackage":"default", "volume": 1.0, "mode":"flow", "features": ""}
+
+          ]
+        },
+
+        // AUDIO filenames should not have spaces or hyphens.
+        //
+        "PLAYWRONG": {
+          "type": "MODULE",
+          "reuse": true,
+          "COMMENT": "TBD",
+          "tracks": [
+            {"name": "LOG_EVENT", "type": "QUEUEDCOMMAND", "id": "SAddSubtract", "method": "logState", "parms": "type#node,value#PLAYWRONG:String", "features":""},
+
+            {"type": "AUDIO", "command": "PLAY", "soundsource": "Not quite try again.mp3",       "soundpackage":"default", "volume": 1.0, "mode":"event", "features": "ASM_DIGIT_OR_OVERHEAD_WRONG"}
+          ]
+        },
+
+        "WAIT_FOR_INPUT": {
+          "type": "MODULE",
+          "reuse": true,
+          "COMMENT": "TBD",
+          "tracks": [
+            {"name": "LOG_EVENT", "type": "QUEUEDCOMMAND", "id": "SAddSubtract", "method": "logState", "parms": "type#node,value#WAIT_FOR_INPUT:String", "features":""},
+
+            {"type": "COMMAND", "id": "SAddSubtract", "method": "highlightOverhead", "parms": "",               "features": "ASM_SUB" },
+            {"type": "COMMAND", "cmd": "WAIT"}
+          ]
+        },
+
+        "PLAYEXIT1":{
+          "type": "MODULE",
+          "reuse":true,
+          "COMMENT": "TBD",
+          "tracks": [
+            {"name": "LOG_EVENT", "type": "QUEUEDCOMMAND", "id": "SAddSubtract", "method": "logState", "parms": "type#node,value#PLAYEXIT1:String", "features":""}
+          ]
+        },
+
+        "PLAYEXIT2":{
+          "type": "MODULE",
+          "reuse":true,
+          "COMMENT": "TBD",
+          "tracks": [
+            {"name": "LOG_EVENT", "type": "QUEUEDCOMMAND", "id": "SAddSubtract", "method": "logState", "parms": "type#node,value#PLAYEXIT2:String", "features":""}
+          ]
+        },
+
+        "EMPTY_MODULE":{
+          "type": "MODULE",
+          "reuse":true,
+          "COMMENT": "TBD",
+          "tracks": [
+            {"name": "LOG_EVENT", "type": "QUEUEDCOMMAND", "id": "SAddSubtract", "method": "logState", "parms": "type#node,value#EMPTY_MODULE:String", "features":""}
+          ]
+        }
+
+
+      },
+
+
+      "actionMap": {
+
+        "COMMENT": "@@@@@  CActions @@@@@ ",
+
+        "SET_VERSION":{"type": "COMMAND", "id": "Sbanner", "method": "setVersionID", "parms": "v.0.0.1:String","features":""},
+
+        "POST_DELAYED_SCAFFOLD"       : {"type": "COMMAND", "id": "SAddSubtract", "method": "postEvent",  "parms": "SHOW_SCAFFOLD_BEHAVIOR:String|3000:Integer", "features":"!FTR_DEMO"},
+        "CANCEL_POST_DELAYED_SCAFFOLD": {"type": "COMMAND", "id": "SAddSubtract", "method": "cancelPost", "parms": "SHOW_SCAFFOLD_BEHAVIOR:String",  "features":""},
+
+        "SHOW_SCAFFOLD": {"type": "COMMAND", "id": "SAddSubtract", "method": "setDotBagsVisible", "parms":"TRUE:Boolean"},
+        "HIDE_SCAFFOLD": {"type": "COMMAND", "id": "SAddSubtract", "method": "setDotBagsVisible", "parms":"FALSE:Boolean"},
+
+        "SET_SCAFFOLD_BEHAVIOR":    {"type": "COMMAND", "id": "SAddSubtract", "method": "setStickyBehavior", "parms": "SHOW_SCAFFOLD_BEHAVIOR:String|MATH_SCAFFOLD_BEHAVIOR:String" ,"features":""},
+        "CLR_SCAFFOLD_BEHAVIOR":    {"type": "COMMAND", "id": "SAddSubtract", "method": "setStickyBehavior", "parms": "SHOW_SCAFFOLD_BEHAVIOR:String|NULL:String" ,"features":""},
+        "CANCEL_SCAFFOLD_BEHAVIOR": {"type": "COMMAND", "id": "SHOW_SCAFFOLD_BEHAVIOR", "method": "cancelNode", "parms": "",  "features":""},
+
+        "SET_SCAFFOLD_COMPLETE_BEHAVIOR": {"type": "COMMAND", "id": "SAddSubtract", "method": "setStickyBehavior", "parms": "SCAFFOLD_RESULT_BEHAVIOR:String|SCAFFOLD_RESULT_BEHAVIOR:String" ,"features":""},
+        "CLR_SCAFFOLD_COMPLETE_BEHAVIOR": {"type": "COMMAND", "id": "SAddSubtract", "method": "setStickyBehavior", "parms": "SCAFFOLD_RESULT_BEHAVIOR:String|NULL:String" ,"features":""},
+        "CANCEL_SCAFFOLD_RESULT": {"type": "COMMAND", "id": "SHOW_SCAFFOLD_BEHAVIOR", "method": "cancelNode", "parms": "",  "features":""},
+
+        "SET_WRITE_BEHAVIOR":    {"type": "COMMAND", "id": "SAddSubtract", "method": "setStickyBehavior", "parms": "START_WRITING_BEHAVIOR:String|CANCEL_SCAFFOLD_BEHAVIORS:String" ,"features":""},
+        "CLR_WRITE_BEHAVIOR":    {"type": "COMMAND", "id": "SAddSubtract", "method": "setStickyBehavior", "parms": "START_WRITING_BEHAVIOR:String|NULL:String" ,"features":""},
+
+        "SET_ON_ANSWER_BEHAVIOR": {"type": "COMMAND", "id": "SAddSubtract", "method": "setStickyBehavior", "parms": "ON_ANSWER_BEHAVIOR:String|NEXT:String" ,"features":""},
+        "CLR_ON_ANSWER_BEHAVIOR": {"type": "COMMAND", "id": "SAddSubtract", "method": "setStickyBehavior", "parms": "ON_ANSWER_BEHAVIOR:String|NULL:String" ,"features":""},
+
+        "SET_CHIME_BEHAVIOR": {"type": "COMMAND", "id": "SAddSubtract", "method": "setStickyBehavior", "parms": "CHIME_FEEDBACK:String|CHIME_FEEDBACK:String" ,"features":""},
+        "CLR_CHIME_BEHAVIOR": {"type": "COMMAND", "id": "SAddSubtract", "method": "setStickyBehavior", "parms": "CHIME_FEEDBACK:String|NULL:String" ,"features":""},
+
+        "HIGHLIGHT_OVERHEAD": {"type": "COMMAND", "id": "SAddSubtract", "method": "highlightOverhead", "parms": ""},
+
+        "SET_DATASOURCE":{"type": "COMMAND", "id": "SAddSubtract", "method": "setDataSource", "parms": "LOCAL_FILE:String", "features":"!DATA_SADDSUBTRACT"},
+        "NEXT_DATASET":{"type": "COMMAND", "id": "SAddSubtract", "method": "next" ,"features":""},
+
+        "SET_INPUT_BEHAVIOR": {"type": "COMMAND", "id": "SAddSubtract", "method": "setStickyBehavior", "parms": "INPUT_BEHAVIOR:String|NEXT:String" ,"features":""},
+        "CLR_INPUT_BEHAVIOR": {"type": "COMMAND", "id": "SAddSubtract", "method": "setStickyBehavior", "parms": "INPUT_BEHAVIOR:String|NULL:String" ,"features":""},
+
+        "SET_NEXT_BEHAVIOR": {"type": "COMMAND", "id": "SAddSubtract", "method": "setStickyBehavior", "parms": "NEXT_NODE:String|NEXT:String" ,"features":""},
+        "CLR_NEXT_BEHAVIOR": {"type": "COMMAND", "id": "SAddSubtract", "method": "setStickyBehavior", "parms": "NEXT_NODE:String|NULL:String" ,"features":""},
+
+        "RETRACT_DEMO":      {"type": "COMMAND", "id": "SAddSubtract", "method": "retractFeature", "parms": "FTR_DEMO:String", "features":""},
+
+        "RESET":{"type": "COMMAND", "id": "SAddSubtract", "method": "reset" ,"features":""},
+
+        "GOTONEXTSCENE": {"type": "COMMAND", "cmd": "NEXTSCENE" },
+
+        "NEXT":      {"type": "COMMAND", "cmd": "NEXT" },
+        "PAUSE":     {"type": "COMMAND", "cmd": "WAIT" },
+
+        //FINGERWRITING ADDITIONS
+        "FW_DISABLE":{"type": "COMMAND", "id": "SfingerWriter", "method": "enable", "parms": "FALSE:Boolean","features":""},
+        //disable FingerWriting
+        "FW_ENABLE":{"type": "COMMAND", "id": "SfingerWriter", "method": "enable", "parms": "TRUE:Boolean","features":""}
+        //enable FingerWriting
+      },
+
+
+      // Use FTR_ Prefix on "features" to facilitate identification during debugging
+      //
+
+      "constraintMap": {
+        "COMMENT": "@@@@@  CConstraints @@@@@ ",
+
+        "COND_PASS1": {
+          "type": "CONDITION",
+          "If": "FTR_NOWORDS && ALL_CORRECT",
+          "Then":"true",
+          "Else":"false"
+        },
+
+        "COND_PASS2": {
+          "type": "CONDITION",
+          "If": "FTR_NOWORDS && NOT_ALL_CORRECT",
+          "Then":"true",
+          "Else":"false"
+        },
+
+        "FTR_NOWORDS":{
+          "type": "CONDITION",
+          "test":"FTR_NOWORDS"
+        },
+
+        "FTR_DEMO":{
+          "type": "CONDITION",
+          "test":"FTR_DEMO_ADD|FTR_DEMO_ZERO_ADD|FTR_DEMO_ADD_ZERO|FTR_DEMO_SUB|FTR_DEMO_SUB_ZERO"
+        },
+
+        "FTR_DEMO_COMPLETE":{
+          "type": "CONDITION",
+          "test":"FTR_COMPLETE&FTR_DEMO"
+        },
+
+        "FTR_COMPLETE":{
+          "type": "CONDITION",
+          "test":"FTR_COMPLETE"
+        },
+
+        "FTR_WORDS":{
+          "type": "CONDITION",
+          "test":"!FTR_NOWORDS"
+        },
+
+        "ALL_CORRECT": {
+          "type": "CONDITION",
+          "test": "ALL_CORRECT"
+        },
+
+        "NOT_ALL_CORRECT": {
+          "type": "CONDITION",
+          "test": "!ALL_CORRECT"
+        },
+
+        "FTR_RIGHT": {
+          "type": "CONDITION",
+          "test": "FTR_RIGHT"
+        },
+
+        "FTR_WRONG": {
+          "type": "CONDITION",
+          "test": "FTR_WRONG"
+        },
+
+        "FTR_NO_ACTION": {
+          "type": "CONDITION",
+          "test": "FTR_NO_ACTION"
+        },
+
+        "CLICK_ON_DOT": {
+          "type": "CONDITION",
+          "test": "ASM_CLICK_ON_DOT"
+        },
+
+        "ASM_ADD": {
+          "type": "CONDITION",
+          "test": "ASM_ADD"
+        },
+
+        "ASM_SUB": {
+          "type": "CONDITION",
+          "test": "ASM_SUB"
+        },
+
+        "ASM_MULTI": {
+          "type": "CONDITION",
+          "test": "ASM_MULTI"
+        }
+      }
+    }
+  }
+}

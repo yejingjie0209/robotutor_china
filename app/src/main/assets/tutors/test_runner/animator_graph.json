@@ -1,0 +1,458 @@
+{
+  "animatorMap": {
+    "COMMENT": "Test Runner Animation Graph",
+
+    "test_runner": {
+
+      "type": "ANIMATOR",
+      "name": "Word copying tutor",
+      "COMMENT": "This is where you describe your tutor",
+      "version": "1.0.0",
+      "rootnode": "CONDTEST_STATE",
+
+      "nodeMap": {
+
+        "COMMENT": "@@@@@  CNodes  @@@@@",
+
+        // PFEATURE_STATE1 - run through a sequence of audio using pfeatures to select
+        // clips stochastically
+
+        "PFEATURE_STATE1": {
+          "type": "NODE",
+          "COMMENT": "Test of pfeatures",
+          "maptype":"moduleMap",
+          "mapname": "PFEATURE_TSTA",
+          "preenter": [
+          ],
+          "preexit": [
+          ],
+          "edges": [
+            { "constraint": "", "edge": "PFEATURE_STATE2"  }
+          ]
+        },
+
+        "PFEATURE_STATE2": {
+          "type": "NODE",
+          "COMMENT": "Test of pfeatures",
+          "maptype":"moduleMap",
+          "mapname": "PFEATURE_TSTB",
+          "preenter": [
+          ],
+          "preexit": [
+          ],
+          "edges": [
+            { "constraint": "", "edge": "PFEATURE_STATE1"  }
+          ]
+        },
+
+
+        // Timeline test series -
+        // TODO: Flash Timelines have been lost
+
+        "ABS_TIMELINE_STATE": {
+          "type": "NODE",
+          "COMMENT": "Test of stream mode audio",
+          "maptype":"actionMap",
+          "mapname": "ABS_TIMELINE_TEST1",
+          "preenter": [
+          ],
+          "preexit": [
+          ],
+          "edges": [
+            {
+              "constraint": "",
+              "edge": "AUDIOSTREAM_STATE"
+            }
+          ]
+        },
+
+        "AUDIOFLOW_STATE": {
+          "type": "NODE",
+          "COMMENT": "Test of stream mode audio",
+          "maptype":"moduleMap",
+          "mapname": "AUDIOFLOW_MOD",
+          "preenter": [
+          ],
+          "preexit": [
+          ],
+          "edges": [
+            {
+              "constraint": "",
+              "edge": "AUDIOSTREAM_STATE"
+            }
+          ]
+        },
+
+        "AUDIOSTREAM_STATE": {
+          "type": "NODE",
+          "COMMENT": "Test of stream mode audio",
+          "maptype":"moduleMap",
+          "mapname": "AUDIOSTREAM_MOD",
+          "preenter": [
+            "B1_ATTACH"
+          ],
+          "preexit": [
+          ],
+          "edges": [
+            {
+              "constraint": "",
+              "edge": "AUDIOEVENT_STATE"
+            }
+          ]
+        },
+
+        "AUDIOEVENT_STATE": {
+          "type": "NODE",
+          "COMMENT": "Test of stream mode audio",
+          "maptype":"moduleMap",
+          "mapname": "AUDIOEVENT_MOD",
+          "preenter": [
+          ],
+          "preexit": [
+          ],
+          "edges": [
+            {
+              "constraint": "",
+              "edge": "AUDIOSTREAM_STATE"
+            }
+          ]
+        },
+
+        // Test conditionals
+        //
+        "CONDTEST_STATE": {
+          "type": "NODE",
+          "COMMENT": "Intro Clip",
+          "maptype":"actionMap",
+          "mapname": "INTRO_STATE_TRACK",
+          "preenter": [
+            "COMPPARTESTEQUATE-PASS",
+            "COMPPARTESTEQUATE-FAIL",
+            "PARTESTEQUATE-PASS",
+            "PARTESTEQUATE-FAIL",
+            "TESTEQUATE-PASS",
+            "TESTEQUATE-FAIL",
+            "TESTNEQUATE-PASS",
+            "TESTNEQUATE-FAIL",
+            "TESTAND-PASS",
+            "TESTAND-FAIL",
+            "TESTOR-PASS",
+            "TESTOR-FAIL",
+            "SETVALUES",
+            "B5_ATTACH"
+          ],
+          "preexit": [
+            "B5_DEATTACH"
+          ],
+          "edges": [
+            {
+              "constraint": "",
+              "edge": "USERINPUT"
+            }
+          ]
+        },
+
+        "SCENE_END": {
+          "type": "NODE",
+          "COMMENT": "When module is complete - move to next scene in the scenegraph",
+          "maptype":"actionMap",
+          "mapname": "NEXTSCENE",
+          "preenter": [],
+          "preexit": [],
+          "edges": [
+          ]
+        }
+      },
+
+      "moduleMap": {
+
+        "COMMENT": "@@@@@  CModules  @@@@@",
+
+        "PFEATURE_TSTA": {
+          "type": "MODULE",
+          "reuse":true,
+          "COMMENT": "????",
+          "tracks": [
+            {"type": "AUDIO", "command": "PLAY", "soundsource": "test/orange.mp3", "mode":"flow", "pid":"PFTR_TST", "$P":"1|0", "cycle":"1", "features": ""},
+            {"type": "AUDIO", "command": "PLAY", "soundsource": "test/pink.mp3",   "mode":"flow", "pid":"PFTR_TSTB", "$P":"1|.5", "cycle":"1", "features": ""}
+          ]
+        },
+
+        "PFEATURE_TSTB": {
+          "type": "MODULE",
+          "reuse":true,
+          "COMMENT": "????",
+          "tracks": [
+            {"type": "AUDIO", "command": "PLAY", "soundsource": "test/purple.mp3", "mode":"flow", "features": ""}
+          ]
+        },
+
+
+        "AUDIOFLOW_MOD": {
+          "type": "MODULE",
+          "reuse":true,
+          "COMMENT": "????",
+          "tracks": [
+            {"type": "AUDIO", "command": "PLAY", "soundsource": "test/orange.mp3", "mode":"flow", "features": ""},
+            {"type": "AUDIO", "command": "PLAY", "soundsource": "test/pink.mp3",   "mode":"flow", "features": ""},
+            {"type": "AUDIO", "command": "PLAY", "soundsource": "test/purple.mp3", "mode":"flow", "features": ""}
+          ]
+        },
+
+        "AUDIOSTREAM_MOD": {
+          "type": "MODULE",
+          "reuse":true,
+          "COMMENT": "????",
+          "tracks": [
+            {"type": "AUDIO", "command": "PLAY", "soundsource": "test/orange.mp3", "mode":"stream", "features": ""},
+            {"type": "AUDIO", "command": "PLAY", "soundsource": "test/pink.mp3",   "mode":"stream", "features": ""},
+            {"type": "AUDIO", "command": "PLAY", "soundsource": "test/purple.mp3", "mode":"stream", "features": ""}
+          ]
+        },
+
+        "AUDIOEVENT_MOD": {
+          "type": "MODULE",
+          "reuse":true,
+          "COMMENT": "????",
+          "tracks": [
+            {"type": "AUDIO", "command": "PLAY", "soundsource": "test/orange.mp3", "mode":"event", "features": ""},
+            {"type": "AUDIO", "command": "PLAY", "soundsource": "test/pink.mp3",   "mode":"event", "features": ""},
+            {"type": "AUDIO", "command": "PLAY", "soundsource": "test/purple.mp3", "mode":"event", "features": ""}
+          ]
+        },
+
+
+        "COMPPARTESTEQUATE-PASS": {
+          "type": "MODULE",
+          "reuse":true,
+          "COMMENT": "????",
+          "tracks": [
+            {"type": "TBoolean", "name":"TESTB1", "value":"true", "features": ""},
+            {"type": "TInteger", "name":"TEST2", "value":"2", "features": ""},
+            {"type": "TInteger", "name":"TEST3", "value":"2", "features": ""},
+            {"type": "CONDITION", "If": "(TEST2 == TEST3) && TESTB1", "Then":"ValueSET1", "Else":"ValueSET2"}
+          ]
+        },
+        "COMPPARTESTEQUATE-FAIL": {
+          "type": "MODULE",
+          "reuse":true,
+          "COMMENT": "????",
+          "tracks": [
+            {"type": "TBoolean", "name":"TESTB1", "value":"false", "features": ""},
+            {"type": "TInteger", "name":"TEST2", "value":"2", "features": ""},
+            {"type": "TInteger", "name":"TEST3", "value":"2", "features": ""},
+            {"type": "CONDITION", "If": "(TEST2 == TEST3) && TESTB1", "Then":"ValueSET1", "Else":"ValueSET2"}
+          ]
+        },
+
+        "PARTESTEQUATE-PASS": {
+          "type": "MODULE",
+          "reuse":true,
+          "COMMENT": "????",
+          "tracks": [
+            {"type": "TInteger", "name":"TEST2", "value":"2", "features": ""},
+            {"type": "TInteger", "name":"TEST3", "value":"2", "features": ""},
+            {"type": "CONDITION", "If": "(TEST2 == TEST3)", "Then":"ValueSET1", "Else":"ValueSET2"}
+          ]
+        },
+        "PARTESTEQUATE-FAIL": {
+          "type": "MODULE",
+          "reuse":true,
+          "COMMENT": "????",
+          "tracks": [
+            {"type": "TInteger", "name":"TEST2", "value":"2", "features": ""},
+            {"type": "TInteger", "name":"TEST3", "value":"3", "features": ""},
+            {"type": "CONDITION", "If": "(TEST2 == TEST3)", "Then":"ValueSET1", "Else":"ValueSET2"}
+          ]
+        },
+        "TESTEQUATE-PASS": {
+          "type": "MODULE",
+          "reuse":true,
+          "COMMENT": "????",
+          "tracks": [
+            {"type": "TInteger", "name":"TEST2", "value":"2", "features": ""},
+            {"type": "TInteger", "name":"TEST3", "value":"2", "features": ""},
+            {"type": "CONDITION", "If": "TEST2 == TEST3", "Then":"ValueSET1", "Else":"ValueSET2"}
+          ]
+        },
+        "TESTEQUATE-FAIL": {
+          "type": "MODULE",
+          "reuse":true,
+          "COMMENT": "????",
+          "tracks": [
+            {"type": "TInteger", "name":"TEST2", "value":"2", "features": ""},
+            {"type": "TInteger", "name":"TEST3", "value":"3", "features": ""},
+            {"type": "CONDITION", "If": "TEST2 == TEST3", "Then":"ValueSET1", "Else":"ValueSET2"}
+          ]
+        },
+        "TESTNEQUATE-PASS": {
+          "type": "MODULE",
+          "reuse":true,
+          "COMMENT": "????",
+          "tracks": [
+            {"type": "TInteger", "name":"TEST2", "value":"2", "features": ""},
+            {"type": "TInteger", "name":"TEST3", "value":"3", "features": ""},
+            {"type": "CONDITION", "If": "TEST2 != TEST3", "Then":"ValueSET1", "Else":"ValueSET2"}
+          ]
+        },
+        "TESTNEQUATE-FAIL": {
+          "type": "MODULE",
+          "reuse":true,
+          "COMMENT": "????",
+          "tracks": [
+            {"type": "TInteger", "name":"TEST2", "value":"2", "features": ""},
+            {"type": "TInteger", "name":"TEST3", "value":"2", "features": ""},
+            {"type": "CONDITION", "If": "TEST2 != TEST3", "Then":"ValueSET1", "Else":"ValueSET2"}
+          ]
+        },
+        "TESTAND-PASS": {
+          "type": "MODULE",
+          "reuse":true,
+          "COMMENT": "????",
+          "tracks": [
+            {"type": "TBoolean", "name":"TESTB1", "value":"true", "features": ""},
+            {"type": "TBoolean", "name":"TESTB2", "value":"true", "features": ""},
+            {"type": "CONDITION", "If": "TESTB1 && TESTB2", "Then":"ValueSET1", "Else":"ValueSET2"}
+          ]
+        },
+        "TESTAND-FAIL": {
+          "type": "MODULE",
+          "reuse":true,
+          "COMMENT": "????",
+          "tracks": [
+            {"type": "TBoolean", "name":"TESTB1", "value":"true", "features": ""},
+            {"type": "TBoolean", "name":"TESTB2", "value":"false", "features": ""},
+            {"type": "CONDITION", "If": "TESTB1 && TESTB2", "Then":"ValueSET1", "Else":"ValueSET2"}
+          ]
+        },
+        "TESTOR-PASS": {
+          "type": "MODULE",
+          "reuse":true,
+          "COMMENT": "????",
+          "tracks": [
+            {"type": "TBoolean", "name":"TESTB1", "value":"false", "features": ""},
+            {"type": "TBoolean", "name":"TESTB2", "value":"true", "features": ""},
+            {"type": "CONDITION", "If": "TESTB1 || TESTB2", "Then":"ValueSET1", "Else":"ValueSET2"}
+          ]
+        },
+        "TESTOR-FAIL": {
+          "type": "MODULE",
+          "reuse":true,
+          "COMMENT": "????",
+          "tracks": [
+            {"type": "TBoolean", "name":"TESTB1", "value":"false", "features": ""},
+            {"type": "TBoolean", "name":"TESTB2", "value":"false", "features": ""},
+            {"type": "CONDITION", "If": "TESTB1 || TESTB2", "Then":"ValueSET1", "Else":"ValueSET2"}
+          ]
+        },
+
+
+
+        "SETVALUES": {
+          "type": "MODULE",
+          "reuse":true,
+          "COMMENT": "????",
+          "tracks": [
+            {"type": "TBoolean", "name":"TESTB1", "value":"true", "features": ""},
+            {"type": "TBoolean", "name":"TESTB2", "value":"true", "features": ""},
+            {"type": "TBoolean", "name":"TESTB3", "value":"false", "features": ""},
+            {"type": "TBoolean", "name":"TESTB4", "value":"false", "features": ""},
+            {"type": "TInteger", "name":"TEST2", "value":"2", "features": ""},
+            {"type": "TInteger", "name":"TEST3", "value":"2", "features": ""},
+            {"type": "CONDITION", "If": "TESTB1 && TESTB2", "Then":"ValueSET1", "Else":"ValueSET2"}
+          ]
+        },
+
+
+        "ValueSET1": {
+          "type": "MODULE",
+          "reuse":true,
+          "COMMENT": "????",
+          "tracks": [
+            {"type": "TBoolean", "name":"PLAYING", "value":"false", "features": ""},
+            {"type": "COMMAND", "id":"PLAYING", "method":"=", "value":"true", "features": ""},
+            {"type": "TInteger", "name":"PLAY_COUNT", "value":"0", "features": ""},
+            {"type": "COMMAND", "id":"PLAY_COUNT", "method":"+", "value":"1", "features": ""},
+            {"type": "COMMAND", "id":"PLAY_COUNT", "method":"-", "value":"4", "features": ""}
+          ]
+        },
+        "ValueSET2": {
+          "type": "MODULE",
+          "reuse":true,
+          "COMMENT": "????",
+          "tracks": [
+            {"type": "TBoolean", "name":"PLAYING", "value":"true", "features": ""},
+            {"type": "COMMAND", "id":"PLAYING", "method":"=", "value":"true", "features": ""},
+            {"type": "TInteger", "name":"PLAY_COUNT", "value":"10", "features": ""},
+            {"type": "COMMAND", "id":"PLAY_COUNT", "method":"+", "value":"1", "features": ""},
+            {"type": "COMMAND", "id":"PLAY_COUNT", "method":"-", "value":"8", "features": ""}
+          ]
+        },
+        "PLAYCORRECT": {
+          "type": "MODULE",
+          "reuse":true,
+          "COMMENT": "????",
+          "tracks": [
+            {"type": "AUDIO", "command": "PLAY", "soundsource": "great.mp3", "features": ""}
+          ]
+        },
+        "PLAYWRONG": {
+          "type": "MODULE",
+          "reuse":true,
+          "COMMENT": "????",
+          "tracks": [
+            {"type": "AUDIO", "command": "PLAY", "soundsource": "great.mp3", "features": ""}
+          ]
+        }
+      },
+
+      "actionMap": {
+
+        "ABS_TIMELINE_TEST1": {"type": "TIMELINE", "trackname": "TR_SIMPLE_ABS1", "features": ""},
+        "REL_TIMELINE_TEST1": {"type": "TIMELINE", "trackname": "TR_SIMPLE_REL1", "features": ""},
+
+        "my_action": {"type": "TIMER", "name": "hint_timeout", "duration":"20", "repeat":"false", "action":"START", "ontimer":"ACTION_NAME", "features": "" },
+
+        "COMMENT": "@@@@@  CActions @@@@@ ",
+        "INTRO_STATE_TRACK":{"type": "AUDIO", "command": "PLAY", "soundsource": "test/orange.mp3", "mode":"stream", "features": ""},
+
+        "B1_ATTACH": {"type": "COMMAND", "id": "Sbutton1", "method": "setButtonBehavior", "parms": "NEXT:String"},
+        "B1_DETACH": {"type": "COMMAND", "id": "Sbutton1", "method": "setButtonBehavior", "parms": "null:String"},
+
+        "B5_ATTACH": {"type": "COMMAND", "id": "Sbutton5", "method": "setButtonBehavior", "parms": "STOP:String"},
+        "B5_DEATTACH": {"type": "COMMAND", "id": "Sbutton5", "method": "setButtonBehavior", "parms": "NULL:String"},
+
+        "NEXT": {"type": "COMMAND", "cmd": "NEXT" },
+        "NEXTSCENE": {"type": "COMMAND", "cmd": "NEXTSCENE" }
+      },
+
+      "constraintMap": {
+
+        "COMMENT": "@@@@@  CConstraints @@@@@ ",
+
+        "COND_PASS": {
+          "type": "CONDITION",
+          "If": "FTR_NOWORDS && FTR_RIGHT",
+          "Then":"",
+          "Else":""
+        },
+        "FTR_NOWORDS": {
+          "type": "CONDITION",
+          "test": "FTR_NOWORDS"
+        },
+        "FTR_WORDS": {
+          "type": "CONDITION",
+          "test": "!FTR_NOWORDS"
+        },
+        "FTR_RIGHT": {
+          "type": "CONDITION",
+          "test": "FTR_RIGHT"
+        },
+        "FTR_WRONG": {
+          "type": "CONDITION",
+          "test": "!FTR_RIGHT"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "bootFeatures": "",
+  "random": false,
+  "singleStimulus": false,
+  "dataSource": [
+    {
+      "isStory": true,
+      "stimulus": "Hili ni chungwa ",
+      "audioStimulus": [
+        "Hili ni chungwa.",
+        "",
+        ""
+      ],
+      "answer": "Hili ni chungwa."
+    }
+  ]
+}
